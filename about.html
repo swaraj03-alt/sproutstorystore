@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About Us | SproutStoryStore</title>
+
+  <!-- Tailwind -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- Font -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- GSAP -->
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#00ffb320 0%,transparent 70%);
+      top:-250px;
+      left:-250px;
+      z-index:-1;
+      animation:move1 8s infinite alternate;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#7c3aed30 0%,transparent 70%);
+      bottom:-250px;
+      right:-250px;
+      z-index:-1;
+      animation:move2 10s infinite alternate;
+    }
+    /* ========================================= */
+/* RESPONSIVE DESIGN */
+/* ========================================= */
+
+/* LARGE LAPTOP */
+
+@media (max-width:1400px){
+
+  .hero h1{
+    font-size:72px;
+  }
+
+}
+
+/* LAPTOP */
+
+@media (max-width:1200px){
+
+  .hero{
+    padding:140px 20px 90px;
+  }
+
+  .hero h1{
+    font-size:64px;
+  }
+
+  .section-title{
+    font-size:52px;
+  }
+
+  .quote-section{
+    padding:60px 40px;
+  }
+
+}
+
+/* TABLET */
+
+@media (max-width:992px){
+
+  .nav-container{
+    padding:18px 20px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+
+  .nav-links{
+    gap:20px;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:130px 20px 80px;
+  }
+
+  .hero h1{
+    font-size:56px;
+    line-height:1.05;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .story-grid{
+    grid-template-columns:1fr;
+  }
+
+  .timeline{
+    max-width:100%;
+  }
+
+  .quote-section h2{
+    font-size:40px;
+  }
+
+  .footer-container{
+    flex-direction:column;
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+  body::before,
+  body::after{
+    width:400px;
+    height:400px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .logo{
+    font-size:22px;
+  }
+
+  .hero{
+    padding:120px 20px 60px;
+  }
+
+  .hero h1{
+    font-size:42px;
+    line-height:1.08;
+  }
+
+  .hero p{
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  section{
+    padding:70px 20px;
+  }
+
+  .section-title{
+    font-size:38px;
+  }
+
+  .section-sub{
+    font-size:15px;
+  }
+
+  .story-card{
+    padding:30px;
+  }
+
+  .story-card h3{
+    font-size:24px;
+  }
+
+  .story-card i{
+    font-size:42px;
+  }
+
+  /* TIMELINE MOBILE */
+
+  .timeline::before{
+    left:20px;
+  }
+
+  .timeline-item{
+    width:100%;
+    left:0 !important;
+    text-align:left !important;
+    padding:0 0 30px 60px;
+  }
+
+  .timeline-dot{
+    left:10px !important;
+    right:auto;
+  }
+
+  .timeline-content{
+    padding:25px;
+  }
+
+  .timeline-content h3{
+    font-size:22px;
+  }
+
+  .quote-section{
+    padding:40px 25px;
+  }
+
+  .quote-section h2{
+    font-size:30px;
+    line-height:1.5;
+  }
+
+  .quote-section p{
+    font-size:16px;
+  }
+
+  footer{
+    padding:60px 20px;
+  }
+
+}
+
+/* SMALL MOBILE */
+
+@media (max-width:480px){
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .section-title{
+    font-size:32px;
+  }
+
+  .story-card{
+    padding:25px;
+  }
+
+  .timeline-content{
+    padding:20px;
+  }
+
+  .quote-section h2{
+    font-size:26px;
+  }
+
+}
+    @keyframes move1{
+      from{transform:translateY(0px);}
+      to{transform:translateY(100px);}
+    }
+
+    @keyframes move2{
+      from{transform:translateX(0px);}
+      to{transform:translateX(-120px);}
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(20px);
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-container{
+      max-width:1300px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 20px;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:800;
+      background:linear-gradient(to right,#00ffb3,#00d4ff);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#bbb;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .nav-links a:hover{
+      color:#00ffb3;
+    }
+
+    .hero{
+      min-height:80vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:160px 20px 100px;
+      position:relative;
+    }
+
+    .hero h1{
+      font-size:82px;
+      line-height:1;
+      margin-bottom:25px;
+      font-weight:800;
+    }
+
+    .gradient-text{
+      background:linear-gradient(to right,#00ffb3,#00d4ff,#7c3aed);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      color:#a8a8a8;
+      font-size:19px;
+      line-height:1.9;
+      max-width:850px;
+      margin:auto;
+    }
+
+    section{
+      padding:100px 20px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:58px;
+      margin-bottom:15px;
+      font-weight:800;
+    }
+
+    .section-sub{
+      text-align:center;
+      color:#aaa;
+      max-width:750px;
+      margin:auto auto 60px;
+      line-height:1.8;
+    }
+
+    .glass{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      border-radius:30px;
+    }
+
+    .story-grid{
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .story-card{
+      padding:40px;
+      transition:0.4s;
+    }
+
+    .story-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 80px rgba(0,255,179,0.15);
+    }
+
+    .story-card i{
+      font-size:50px;
+      color:#00ffb3;
+      margin-bottom:25px;
+    }
+
+    .story-card h3{
+      font-size:30px;
+      margin-bottom:15px;
+    }
+
+    .story-card p{
+      color:#aaa;
+      line-height:1.8;
+    }
+
+    .timeline{
+      max-width:1000px;
+      margin:auto;
+      position:relative;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:50%;
+      width:2px;
+      height:100%;
+      background:rgba(255,255,255,0.08);
+      transform:translateX(-50%);
+    }
+
+    .timeline-item{
+      width:50%;
+      padding:30px;
+      position:relative;
+    }
+
+    .timeline-item:nth-child(odd){
+      left:0;
+      text-align:right;
+    }
+
+    .timeline-item:nth-child(even){
+      left:50%;
+    }
+
+    .timeline-dot{
+      width:20px;
+      height:20px;
+      background:#00ffb3;
+      border-radius:50%;
+      position:absolute;
+      top:40px;
+      right:-10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot{
+      left:-10px;
+    }
+
+    .timeline-content{
+      padding:35px;
+    }
+
+    .timeline-content h3{
+      font-size:28px;
+      margin-bottom:15px;
+    }
+
+    .timeline-content p{
+      color:#aaa;
+      line-height:1.8;
+    }
+
+    .quote-section{
+      max-width:1000px;
+      margin:auto;
+      text-align:center;
+      padding:70px;
+    }
+
+    .quote-section h2{
+      font-size:48px;
+      line-height:1.4;
+      margin-bottom:25px;
+      font-weight:700;
+    }
+
+    .quote-section p{
+      color:#aaa;
+      font-size:18px;
+    }
+
+    footer{
+      padding:80px 20px;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-container{
+      max-width:1300px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:40px;
+    }
+
+    .footer-socials{
+      display:flex;
+      gap:18px;
+      margin-top:25px;
+    }
+
+    .footer-socials a{
+      width:55px;
+      height:55px;
+      border-radius:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:rgba(255,255,255,0.05);
+      color:white;
+      text-decoration:none;
+      transition:0.4s;
+    }
+
+    .footer-socials a:hover{
+      background:#00ffb3;
+      color:black;
+      transform:translateY(-5px);
+    }
+
+    @media(max-width:992px){
+
+      .hero h1{
+        font-size:58px;
+      }
+
+    }
+
+    @media(max-width:768px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .timeline::before{
+        left:20px;
+      }
+
+      .timeline-item{
+        width:100%;
+        padding-left:60px;
+        left:0 !important;
+        text-align:left !important;
+      }
+
+      .timeline-dot{
+        left:10px !important;
+      }
+
+      .section-title{
+        font-size:40px;
+      }
+
+      .quote-section h2{
+        font-size:32px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="nav-container">
+
+      <div class="logo">
+
+        🌱 SproutStoryStore
+
+      </div>
+
+      <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html" style="color:white;">About</a>
+
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div>
+
+      <h1>
+
+        Our Story,
+        <span class="gradient-text">
+
+          Our Mission
+
+        </span>
+
+      </h1>
+
+      <p>
+
+        SproutStoryStore was built to transform imagination into
+        magical digital experiences. We create premium storybooks,
+        printable activities and immersive educational products
+        designed to inspire creativity, learning and wonder.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- VALUES -->
+
+  <section>
+
+    <h2 class="section-title">
+
+      What We Believe
+
+    </h2>
+
+    <p class="section-sub">
+
+      Building meaningful learning experiences through creativity and storytelling.
+
+    </p>
+
+    <div class="story-grid">
+
+      <div class="story-card glass">
+
+        <i class="fa-solid fa-seedling"></i>
+
+        <h3>Creative Learning</h3>
+
+        <p>
+
+          We believe imagination is the foundation of learning.
+          Every story and activity is designed to spark curiosity.
+
+        </p>
+
+      </div>
+
+      <div class="story-card glass">
+
+        <i class="fa-solid fa-earth-americas"></i>
+
+        <h3>Global Access</h3>
+
+        <p>
+
+          Instant digital delivery allows families worldwide
+          to access premium educational resources instantly.
+
+        </p>
+
+      </div>
+
+      <div class="story-card glass">
+
+        <i class="fa-solid fa-book-open"></i>
+
+        <h3>Premium Experiences</h3>
+
+        <p>
+
+          From ebooks to printable kits, every product is
+          carefully crafted with premium quality and design.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- JOURNEY -->
+
+  <section>
+
+    <h2 class="section-title">
+
+      Our Journey
+
+    </h2>
+
+    <p class="section-sub">
+
+      From one creative idea to a global digital storytelling brand.
+
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content glass">
+
+          <h3>
+
+            🌱 The Beginning
+
+          </h3>
+
+          <p>
+
+            SproutStoryStore started with a simple mission:
+            make learning magical and accessible for everyone.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content glass">
+
+          <h3>
+
+            📘 Digital Collections
+
+          </h3>
+
+          <p>
+
+            We created ebooks, printable activities and interactive
+            story experiences loved by creators and families.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content glass">
+
+          <h3>
+
+            🚀 Global Expansion
+
+          </h3>
+
+          <p>
+
+            Growing through Pinterest, Instagram, Gumroad
+            and creator marketplaces around the world.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="timeline-item">
+
+        <div class="timeline-dot"></div>
+
+        <div class="timeline-content glass">
+
+          <h3>
+
+            ✨ The Future
+
+          </h3>
+
+          <p>
+
+            Building the next generation of immersive
+            digital storytelling experiences and learning tools.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- QUOTE -->
+
+  <section>
+
+    <div class="quote-section glass">
+
+      <h2>
+
+        “Stories have the power to inspire creativity,
+        build confidence and shape the future.”
+
+      </h2>
+
+      <p>
+
+        — SproutStoryStore Team
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div>
+
+        <div class="logo">
+
+          🌱 SproutStoryStore
+
+        </div>
+
+        <p style="color:#aaa;max-width:420px;margin-top:20px;line-height:1.8;">
+
+          Premium digital storytelling experiences crafted for
+          creators, educators and modern families worldwide.
+
+        </p>
+
+        <div class="footer-socials">
+
+          <a href="https://instagram.com" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://pinterest.com" target="_blank">
+            <i class="fa-brands fa-pinterest"></i>
+          </a>
+
+          <a href="https://wa.me/917498869992" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+          <a href="mailto:talkitkashish1@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <h3 style="margin-bottom:20px;">
+
+          Quick Links
+
+        </h3>
+
+        <p style="margin-bottom:12px;">
+          <a href="index.html" style="color:#aaa;text-decoration:none;">
+            Home
+          </a>
+        </p>
+
+        <p style="margin-bottom:12px;">
+          <a href="about.html" style="color:#aaa;text-decoration:none;">
+            About
+          </a>
+        </p>
+
+        <p style="margin-bottom:12px;">
+          <a href="contact.html" style="color:#aaa;text-decoration:none;">
+            Contact
+          </a>
+        </p>
+
+      </div>
+
+      <div>
+
+        <h3 style="margin-bottom:20px;">
+
+          Contact Info
+
+        </h3>
+
+        <p style="color:#aaa;margin-bottom:12px;">
+
+          📧 talkitkashish1@gmail.com
+
+        </p>
+
+        <p style="color:#aaa;">
+
+          📱 +91 7498869992
+
+        </p>
+
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:60px;color:#666;">
+
+      © 2026 SproutStoryStore — All Rights Reserved
+
+    </div>
+
+  </footer>
+
+  <!-- GSAP -->
+
+  <script>
+
+    gsap.from(".hero",{
+      opacity:0,
+      y:80,
+      duration:1.2
+    });
+
+    gsap.from(".story-card",{
+      opacity:0,
+      y:50,
+      stagger:0.2,
+      duration:1
+    });
+
+    gsap.from(".timeline-item",{
+      opacity:0,
+      y:60,
+      stagger:0.3,
+      duration:1.1
+    });
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact Us | SproutStoryStore</title>
+
+  <!-- Tailwind -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- Font -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- GSAP -->
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#00ffb320 0%,transparent 70%);
+      top:-250px;
+      left:-250px;
+      z-index:-1;
+      animation:move1 8s infinite alternate;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle,#7c3aed30 0%,transparent 70%);
+      bottom:-250px;
+      right:-250px;
+      z-index:-1;
+      animation:move2 10s infinite alternate;
+    }
+
+    @keyframes move1{
+      from{transform:translateY(0px);}
+      to{transform:translateY(100px);}
+    }
+
+    @keyframes move2{
+      from{transform:translateX(0px);}
+      to{transform:translateX(-120px);}
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(20px);
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-container{
+      max-width:1300px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 20px;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:800;
+      background:linear-gradient(to right,#00ffb3,#00d4ff);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#bbb;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .nav-links a:hover{
+      color:#00ffb3;
+    }
+
+    .hero{
+      min-height:70vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:160px 20px 100px;
+    }
+
+    .hero h1{
+      font-size:82px;
+      line-height:1;
+      margin-bottom:25px;
+      font-weight:800;
+    }
+
+    .gradient-text{
+      background:linear-gradient(to right,#00ffb3,#00d4ff,#7c3aed);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      color:#a8a8a8;
+      font-size:19px;
+      line-height:1.9;
+      max-width:850px;
+      margin:auto;
+    }
+
+    section{
+      padding:100px 20px;
+    }
+
+    .glass{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      border-radius:30px;
+    }
+
+    .contact-grid{
+      max-width:1300px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      margin-bottom:60px;
+    }
+
+    .contact-card{
+      padding:40px;
+      transition:0.4s;
+      text-align:center;
+    }
+
+    .contact-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 20px 80px rgba(0,255,179,0.15);
+    }
+
+    .contact-card i{
+      font-size:55px;
+      margin-bottom:25px;
+      color:#00ffb3;
+    }
+
+    .contact-card h3{
+      font-size:30px;
+      margin-bottom:15px;
+    }
+
+    .contact-card p{
+      color:#aaa;
+      line-height:1.8;
+      margin-bottom:20px;
+    }
+
+    .contact-card a{
+      color:#00ffb3;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .form-container{
+      max-width:900px;
+      margin:auto;
+      padding:50px;
+    }
+
+    .form-title{
+      text-align:center;
+      font-size:52px;
+      margin-bottom:15px;
+      font-weight:800;
+    }
+
+    .form-sub{
+      text-align:center;
+      color:#aaa;
+      line-height:1.8;
+      margin-bottom:50px;
+    }
+
+    .form-group{
+      margin-bottom:25px;
+    }
+
+    input,
+    textarea,
+    select{
+      width:100%;
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.05);
+      color:white;
+      outline:none;
+      font-size:16px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus{
+      border-color:#00ffb3;
+      box-shadow:0 0 20px rgba(0,255,179,0.2);
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+      color:#777;
+    }
+
+    .submit-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:18px;
+      background:linear-gradient(to right,#00ffb3,#00d4ff);
+      color:black;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.4s;
+    }
+
+    .submit-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 20px 80px rgba(0,255,179,0.25);
+    }
+
+    footer{
+      padding:80px 20px;
+      border-top:1px solid rgba(255,255,255,0.05);
+      margin-top:100px;
+    }
+
+    .footer-container{
+      max-width:1300px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:40px;
+    }
+
+    .footer-socials{
+      display:flex;
+      gap:18px;
+      margin-top:25px;
+    }
+
+    .footer-socials a{
+      width:55px;
+      height:55px;
+      border-radius:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:rgba(255,255,255,0.05);
+      color:white;
+      text-decoration:none;
+      transition:0.4s;
+    }
+
+    .footer-socials a:hover{
+      background:#00ffb3;
+      color:black;
+      transform:translateY(-5px);
+    }
+
+    @media(max-width:768px){
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .form-title{
+        font-size:38px;
+      }
+
+      .form-container{
+        padding:35px;
+      }
+
+    }
+    /* ===================================== */
+/* RESPONSIVE DESIGN */
+/* ===================================== */
+
+/* LARGE LAPTOP */
+
+@media (max-width:1400px){
+
+  .hero h1{
+    font-size:72px;
+  }
+
+}
+
+/* LAPTOP */
+
+@media (max-width:1200px){
+
+  .hero{
+    padding:140px 20px 90px;
+  }
+
+  .hero h1{
+    font-size:64px;
+  }
+
+  .form-title{
+    font-size:46px;
+  }
+
+  .footer-container{
+    gap:60px;
+  }
+
+}
+
+/* TABLET */
+
+@media (max-width:992px){
+
+  .nav-container{
+    padding:18px 20px;
+  }
+
+  .logo-text{
+    font-size:24px;
+  }
+
+  .nav-links{
+    gap:20px;
+  }
+
+  .hero{
+    min-height:auto;
+    padding:130px 20px 80px;
+  }
+
+  .hero h1{
+    font-size:56px;
+    line-height:1.05;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-container{
+    padding:40px;
+  }
+
+  .footer-container{
+    flex-direction:column;
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+  body::before,
+  body::after{
+    width:400px;
+    height:400px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .logo-wrap{
+    gap:10px;
+  }
+
+  .logo-icon{
+    width:46px;
+    height:46px;
+  }
+
+  .logo-text{
+    font-size:21px;
+  }
+
+  .hero{
+    padding:120px 20px 60px;
+  }
+
+  .hero h1{
+    font-size:42px;
+    line-height:1.08;
+  }
+
+  .hero p{
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  section{
+    padding:70px 20px;
+  }
+
+  .contact-card{
+    padding:30px;
+  }
+
+  .contact-card h3{
+    font-size:24px;
+  }
+
+  .contact-card i{
+    font-size:42px;
+  }
+
+  .form-container{
+    padding:30px 22px;
+  }
+
+  .form-title{
+    font-size:34px;
+  }
+
+  .form-sub{
+    font-size:15px;
+  }
+
+  input,
+  textarea,
+  select{
+    padding:16px;
+    font-size:15px;
+  }
+
+  .submit-btn{
+    padding:16px;
+    font-size:16px;
+  }
+
+  footer{
+    padding:60px 20px;
+  }
+
+}
+
+/* SMALL MOBILE */
+
+@media (max-width:480px){
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .form-title{
+    font-size:28px;
+  }
+
+  .contact-card{
+    padding:25px;
+  }
+
+}
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="nav-container">
+
+      <div class="logo">
+
+        🌱 SproutStoryStore
+
+      </div>
+
+      <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html" style="color:white;">Contact</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div>
+
+      <h1>
+
+        Let's Create
+        <span class="gradient-text">
+
+          Something Magical
+
+        </span>
+
+      </h1>
+
+      <p>
+
+        Have questions, ideas or collaboration opportunities?
+        Reach out and connect with the SproutStoryStore team.
+
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT CARDS -->
+
+  <section>
+
+    <div class="contact-grid">
+
+      <!-- EMAIL -->
+
+      <div class="contact-card glass">
+
+        <i class="fa-solid fa-envelope"></i>
+
+        <h3>Email Support</h3>
+
+        <p>
+
+          Have questions about ebooks, printable kits or digital products?
+
+        </p>
+
+        <a href="mailto:talkitkashish1@gmail.com">
+
+          talkitkashish1@gmail.com
+
+        </a>
+
+      </div>
+
+      <!-- WHATSAPP -->
+
+      <div class="contact-card glass">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+        <h3>WhatsApp</h3>
+
+        <p>
+
+          Chat directly with our support team anytime.
+
+        </p>
+
+        <a href="https://wa.me/918459376394" target="_blank">
+
+          +91 8459376394
+
+        </a>
+
+      </div>
+
+      <!-- INSTAGRAM -->
+
+      <div class="contact-card glass">
+
+        <i class="fa-brands fa-instagram"></i>
+
+        <h3>Instagram</h3>
+
+        <p>
+
+          Follow our storytelling journey and latest digital launches.
+
+        </p>
+
+        <a href="https://instagram.com" target="_blank">
+
+          Follow Us
+
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- FORM -->
+
+    <div class="form-container glass">
+
+      <h2 class="form-title">
+
+        Send A Message
+
+      </h2>
+
+      <p class="form-sub">
+
+        Fill out the form below and connect directly with us on WhatsApp.
+
+      </p>
+
+      <form id="whatsappForm">
+
+        <div class="form-group">
+
+          <input 
+            type="text"
+            id="name"
+            placeholder="Your Full Name"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <input 
+            type="email"
+            id="email"
+            placeholder="Your Email Address"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <select id="subject">
+
+            <option>General Inquiry</option>
+            <option>Support</option>
+            <option>Business</option>
+            <option>Partnership</option>
+            <option>Collaboration</option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <textarea 
+            rows="6"
+            id="message"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+        </div>
+
+        <button type="submit" class="submit-btn">
+
+          Send To WhatsApp
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div>
+
+        <div class="logo">
+
+          🌱 SproutStoryStore
+
+        </div>
+
+        <p style="color:#aaa;max-width:420px;margin-top:20px;line-height:1.8;">
+
+          Premium digital storytelling experiences crafted for
+          creators, educators and modern families worldwide.
+
+        </p>
+
+        <div class="footer-socials">
+
+          <a href="https://instagram.com" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://pinterest.com" target="_blank">
+            <i class="fa-brands fa-pinterest"></i>
+          </a>
+
+          <a href="https://wa.me/918459376394" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+
+          <a href="mailto:talkitkashish1@gmail.com">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <h3 style="margin-bottom:20px;">
+
+          Quick Links
+
+        </h3>
+
+        <p style="margin-bottom:12px;">
+          <a href="index.html" style="color:#aaa;text-decoration:none;">
+            Home
+          </a>
+        </p>
+
+        <p style="margin-bottom:12px;">
+          <a href="about.html" style="color:#aaa;text-decoration:none;">
+            About
+          </a>
+        </p>
+
+        <p style="margin-bottom:12px;">
+          <a href="contact.html" style="color:#aaa;text-decoration:none;">
+            Contact
+          </a>
+        </p>
+
+      </div>
+
+      <div>
+
+        <h3 style="margin-bottom:20px;">
+
+          Contact Info
+
+        </h3>
+
+        <p style="color:#aaa;margin-bottom:12px;">
+
+          📧 talkitkashish1@gmail.com
+
+        </p>
+
+        <p style="color:#aaa;">
+
+          📱 +91 8459376394
+
+        </p>
+
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:60px;color:#666;">
+
+      © 2026 SproutStoryStore — All Rights Reserved
+
+    </div>
+
+  </footer>
+
+  <!-- WHATSAPP FORM -->
+
+  <script>
+
+    document
+      .getElementById("whatsappForm")
+      .addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let subject = document.getElementById("subject").value;
+        let message = document.getElementById("message").value;
+
+        let phone = "918459376394";
+
+        let text =
+`🌱 SproutStoryStore Inquiry
+
+👤 Name: ${name}
+
+📧 Email: ${email}
+
+📌 Subject: ${subject}
+
+💬 Message:
+${message}`;
+
+        let url =
+`https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+        window.open(url, "_blank");
+
+      });
+
+    gsap.from(".hero",{
+      opacity:0,
+      y:80,
+      duration:1.2
+    });
+
+    gsap.from(".contact-card",{
+      opacity:0,
+      y:50,
+      stagger:0.2,
+      duration:1
+    });
+
+    gsap.from(".form-container",{
+      opacity:0,
+      scale:0.9,
+      duration:1.2
+    });
+
+  </script>
+
+</body>
+
+</html>

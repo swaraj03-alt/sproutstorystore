@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Collections | SproutStoryStore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: #0B0D13; 
+            color: #fff; 
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, #00ffb330 0%, transparent 70%);
+            top: -250px;
+            left: -250px;
+            z-index: -1;
+            animation: move1 8s infinite alternate;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #7c3aed40 0%, transparent 70%);
+            bottom: -250px;
+            right: -250px;
+            z-index: -1;
+            animation: move2 10s infinite alternate;
+        }
+        @keyframes move1 { from { transform: translateY(0); } to { transform: translateY(100px); } }
+        @keyframes move2 { from { transform: translateX(0); } to { transform: translateX(-100px); } }
+        .product-card {
+            background: rgba(0, 255, 179, 0.05);
+            border: 1px solid rgba(0, 255, 179, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            background: rgba(0, 255, 179, 0.1);
+            border-color: rgba(0, 255, 179, 0.4);
+            transform: translateY(-8px);
+        }
+        .btn-add {
+            padding: 12px 24px;
+            border-radius: 12px;
+            background: linear-gradient(to right, #00ffb3, #00d4ff);
+            color: black;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.4s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-add:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(0, 255, 179, 0.2); }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-2xl font-black">
+                <span style="background: linear-gradient(to right, #00ffb3, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🌱 SproutStoryStore</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="text-gray-400 hover:text-white transition">Home</a>
+                <a href="products.html" class="text-white">Shop</a>
+                <a href="about.html" class="text-gray-400 hover:text-white transition">About</a>
+                <a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <section class="pt-40 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-6xl font-black mb-4">Our Collections</h1>
+            <p class="text-xl text-gray-400">Explore our premium digital learning materials</p>
+        </div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section class="py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-purple-600/30 to-blue-600/30 flex items-center justify-center">
+                        <i class="fas fa-book-open text-6xl text-purple-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">The Ultimate Web Design Guide</h3>
+                        <p class="text-gray-400 text-sm mb-4">Comprehensive guide covering modern design principles, UX/UI best practices, and hands-on projects.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$49.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$29.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-cyan-600/30 to-blue-600/30 flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-cyan-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">React.js Complete Masterclass</h3>
+                        <p class="text-gray-400 text-sm mb-4">Master modern React with hooks, context, and advanced patterns. 50+ real-world projects included.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$79.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$39.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-emerald-600/30 to-green-600/30 flex items-center justify-center">
+                        <i class="fas fa-database text-6xl text-emerald-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Database Design Fundamentals</h3>
+                        <p class="text-gray-400 text-sm mb-4">Learn SQL, NoSQL, optimization, and scalability. Perfect for backend developers and data enthusiasts.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$59.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$34.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-pink-600/30 to-red-600/30 flex items-center justify-center">
+                        <i class="fas fa-brain text-6xl text-pink-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Artificial Intelligence for Beginners</h3>
+                        <p class="text-gray-400 text-sm mb-4">Introduction to ML algorithms, neural networks, and practical AI applications with Python.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$69.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$44.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-yellow-600/30 to-orange-600/30 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Financial Analysis & Investing</h3>
+                        <p class="text-gray-400 text-sm mb-4">Understand markets, analyze investments, and build wealth. Complete course with real examples.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$54.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$32.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-indigo-600/30 to-purple-600/30 flex items-center justify-center">
+                        <i class="fas fa-pen-fancy text-6xl text-indigo-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Creative Writing Masterclass</h3>
+                        <p class="text-gray-400 text-sm mb-4">Develop your writing skills with proven techniques. From fiction to copywriting, all covered.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$39.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$24.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-red-600/30 to-pink-600/30 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-6xl text-red-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Fitness & Nutrition Blueprint</h3>
+                        <p class="text-gray-400 text-sm mb-4">Complete guide to fitness training, nutrition science, and healthy lifestyle changes with science.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$44.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$27.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center">
+                        <i class="fas fa-globe text-6xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Advanced Digital Marketing</h3>
+                        <p class="text-gray-400 text-sm mb-4">Master SEO, SEM, social media, and content strategy. Proven tactics from industry leaders.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$64.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$38.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="h-56 bg-gradient-to-br from-green-600/30 to-emerald-600/30 flex items-center justify-center">
+                        <i class="fas fa-leaf text-6xl text-green-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Sustainable Living Guide</h3>
+                        <p class="text-gray-400 text-sm mb-4">Learn eco-friendly practices, green technology, and sustainable business models for better future.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 line-through text-sm">$34.99</span>
+                                <span class="text-3xl font-bold text-green-400 ml-2">$19.99</span>
+                            </div>
+                            <button class="btn-add text-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto bg-gradient-to-r from-purple-600/10 to-blue-600/10 border border-purple-600/30 rounded-2xl p-12 text-center">
+            <h2 class="text-4xl font-black mb-6">Special Bundle Offer</h2>
+            <p class="text-xl text-gray-400 mb-8">Buy any 3 collections and get 20% off your entire order!</p>
+            <button class="btn-add text-lg">View Bundle Deals</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-16 px-6 mt-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="text-2xl font-black mb-4">
+                        <span style="background: linear-gradient(to right, #00ffb3, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🌱 SproutStoryStore</span>
+                    </div>
+                    <p class="text-gray-500 text-sm">Premium digital learning for modern minds</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="products.html" class="hover:text-white transition">Collections</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">New Releases</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Support</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms</a></li>
+                        <li><a href="#" class="hover:text-white transition">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 SproutStoryStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
